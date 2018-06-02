@@ -1,1 +1,0 @@
-# codefights-arcade-intro
