@@ -1,0 +1,6 @@
+bool evenDigitsOnly(int n) {
+    for (int dig=0; n>0; n/=10)
+        if ((dig=n%10)%2 != 0)
+            return false;        
+    return true;
+}
