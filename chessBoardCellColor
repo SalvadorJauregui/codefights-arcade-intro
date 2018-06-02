@@ -1,0 +1,9 @@
+boolean chessBoardCellColor(String cell1, String cell2) {
+        int l1 = cell1.charAt(0)-'A';
+        int l2 = cell2.charAt(0)-'A';
+        
+        l1 = (l1 + (int)cell1.charAt(1)-'1')%2;
+        l2 = (l2 + (int)cell2.charAt(1)-'1')%2;
+                
+        return (l1 == l2);
+}
