@@ -1,6 +1,21 @@
+/* solution 1 */
 bool evenDigitsOnly(int n) {
     for (int dig=0; n>0; n/=10)
         if ((dig=n%10)%2 != 0)
             return false;        
     return true;
+}
+
+/* solution 2 */
+boolean evenDigitsOnly(int n) {
+    return Integer.toString(n).matches("(0|2|4|6|8)*");
+}
+
+/* solution 3 */
+boolean evenDigitsOnly(int n) {
+    if (n == 0) 
+        return true;
+    if (n % 2 != 0)
+        return false;
+    return evenDigitsOnly(n / 10);
 }
