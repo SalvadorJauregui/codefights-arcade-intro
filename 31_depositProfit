@@ -1,0 +1,11 @@
+int depositProfit(int deposit, int rate, int threshold) {
+    int years = 0;
+    double dep = deposit;
+    while(dep < threshold){
+        dep *= 1.0 + ((double)rate/100);
+        System.out.println(dep);
+        ++years;
+    }    
+    return years;
+}
+
