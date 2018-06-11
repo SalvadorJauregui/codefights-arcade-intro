@@ -1,0 +1,41 @@
+/* C/C++*/
+bool checkPalindrome(char * inputString) {
+  char *i    = &inputString[0];
+  char *j    = &inputString[0];
+  size_t len = 0;
+  
+  /* Go to the end of inputString */
+  while(*j != '\0'){
+    j++;
+    ++len;
+  }
+  --j;  
+ 
+ /* Check if dif */
+  for (int k=0; k<len/2; k++,i++,j--)
+    if (*i != *j)
+      return false;
+  return true;
+}
+
+
+/* JavaScript */
+function checkPalindrome(inputString) {
+    for (let i=0, j=inputString.length-1; i<j; i++,j--){     
+        if (inputString[i] != inputString[j]){
+            return false;
+        }
+    }
+    return true;
+}
+
+
+/* Java */
+boolean checkPalindrome(String inputString) {
+    for (int i=0, j=inputString.length()-1; i<j; i++,j--){     
+        if (inputString.charAt(i) != inputString.charAt(j)){
+            return false;
+        }
+    }
+    return true;
+}
