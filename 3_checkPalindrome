@@ -39,3 +39,8 @@ boolean checkPalindrome(String inputString) {
     }
     return true;
 }
+
+/* Java */
+boolean checkPalindrome(String inputString) {
+    return inputString.equals(new StringBuilder(inputString).reverse().toString());
+}
