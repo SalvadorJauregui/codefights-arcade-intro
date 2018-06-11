@@ -1,0 +1,17 @@
+/* C++ */
+int centuryFromYear(int year) {
+  int x = year / 100;
+  int y = year % 100;
+  return (y ? ++x : x);     
+}
+
+
+/* JAVA */
+int centuryFromYear(int year) { 
+ return (int)Math.ceil((double)year/100);
+}
+
+/* JavaScript */
+function centuryFromYear(year) {
+    return Math.ceil(year/100); 
+}
