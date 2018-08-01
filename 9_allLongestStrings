@@ -1,0 +1,20 @@
+https://app.codesignal.com/arcade/intro/level-3/fzsCQGYbxaEcTr2bL
+
+
+
+String[] allLongestStrings(String[] inputArray) {
+    /* 2n solution */
+    int maxLength=0;
+    ArrayList<String> longestString = new ArrayList<>();
+    /* Find the max length */
+    for (String s : inputArray){
+        maxLength = Math.max(maxLength,s.length());
+    }
+    /* Concat all the string that max the maxLength */
+    for (String s : inputArray){
+        if (s.length() == maxLength){
+            longestString.add(s);
+        }
+    }
+    return longestString.toArray(new String[0]);
+}
