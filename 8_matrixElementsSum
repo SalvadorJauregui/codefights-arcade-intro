@@ -1,0 +1,19 @@
+https://app.codesignal.com/arcade/intro/level-2/xskq4ZxLyqQMCLshr
+
+int matrixElementsSum(int[][] matrix) {
+    int count=0;
+    int length = matrix.length;
+    
+    System.out.println("lenght: "+length);
+    for(int col=0; col < matrix[0].length; col++){
+        for(int row=0; row < matrix.length; row++ ){
+            if (matrix[row][col] == 0){
+                break;
+            }else{
+                count += matrix[row][col];
+                System.out.print(matrix[row][col] + " ");
+            }
+        }
+    }
+    return count;
+}//matrixElement
