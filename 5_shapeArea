@@ -1,0 +1,11 @@
+https://app.codesignal.com/arcade/intro/level-2/yuGuHvcCaFCKk56rJ
+
+int shapeArea(int n) {
+    
+    /*base case */ 
+    if(n==1){
+        return 1;
+    }else{/*Recursive case*/
+        return 4*(n-1) + shapeArea(n-1);
+    }        
+}
