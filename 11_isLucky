@@ -1,0 +1,49 @@
+https://app.codesignal.com/arcade/intro/level-3/3AdBC97QNuhF6RwsQ
+
+Ticket numbers usually consist of an even number of digits. A ticket number is considered lucky if the sum of the first half of the digits is equal to the sum of the second half.
+
+Given a ticket number n, determine if it's lucky or not.
+
+Example
+
+For n = 1230, the output should be
+isLucky(n) = true;
+For n = 239017, the output should be
+isLucky(n) = false.
+Input/Output
+
+[execution time limit] 3 seconds (java)
+
+[input] integer n
+
+A ticket number represented as a positive integer with an even number of digits.
+
+Guaranteed constraints:
+10 ≤ n < 106.
+
+[output] boolean
+
+true if n is a lucky ticket number, false otherwise.
+
+
+
+boolean isLucky(int n) {        
+    List<Integer> dig = new ArrayList<>();  
+   int size = 0, sum1=0, sum2=0;
+    
+    // Get the size of n
+    while( n != 0){
+        dig.add(n%10); //add the rightmost digit
+        n/=10;                
+        size++;
+    }                
+      
+    // Get the sum of the two halfs
+    for(int i=0; i < size/2; i++){        
+            sum1+=dig.get(i);        
+            sum2+=dig.get(size-1-i);
+    }
+    
+    // Determine if it is a lucky number
+    return (sum1 - sum2 == 0 ? true : false);
+}
