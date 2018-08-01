@@ -1,0 +1,69 @@
+https://app.codesignal.com/arcade/intro/level-4/Xfeo7r9SBSpo3Wico/description
+
+
+Given a string, find out if its characters can be rearranged to form a palindrome.
+
+Example
+
+For inputString = "aabb", the output should be
+palindromeRearranging(inputString) = true.
+
+We can rearrange "aabb" to make "abba", which is a palindrome.
+
+Input/Output
+
+[execution time limit] 3 seconds (java)
+
+[input] string inputString
+
+A string consisting of lowercase English letters.
+
+Guaranteed constraints:
+1 ≤ inputString.length ≤ 50.
+
+[output] boolean
+
+true if the characters of the inputString can be rearranged to form a palindrome, false otherwise.
+
+
+
+
+/* Solution 1 */
+boolean palindromeRearranging(String inputString) {
+    int map = 0;
+    for(int i=0; i<inputString.length(); i++) {
+        map ^= 1 << (inputString.charAt(i) - 'a');
+    }
+    return map == 0 || (map & -map) == map;
+}
+
+
+/* Solution 2 */
+
+boolean palindromeRearranging(String a) {
+    int[] map = new int[27];
+    boolean token = false;
+    
+    if (a.length() == 1)
+        return true;
+    
+    // Counts the latters
+    for (int i = 0; i < a.length(); i++){
+        map[a.charAt(i)-'a']++;        
+    }
+    // check if there are pairs
+    for (Integer i : map){
+        // all must be multiple of two.
+        if (a.length()-1%2 == 0){
+            if (i != 0)
+                return false;
+        }else{ // all must be multiple of two expect one
+            if (token == true && i%2 != 0)
+                return false;
+                
+            if (i%2 == 1)
+                token = true;
+        }
+    }
+    return true;
+}
