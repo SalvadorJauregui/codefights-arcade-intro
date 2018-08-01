@@ -1,0 +1,51 @@
+
+https://app.codesignal.com/arcade/intro/level-3/JKKuHJknZNj4YGL32
+
+Given two strings, find the number of common characters between them.
+
+Example
+
+For s1 = "aabcc" and s2 = "adcaa", the output should be
+commonCharacterCount(s1, s2) = 3.
+
+Strings have 3 common characters - 2 "a"s and 1 "c".
+
+Input/Output
+
+[execution time limit] 3 seconds (java)
+
+[input] string s1
+
+A string consisting of lowercase English letters.
+
+Guaranteed constraints:
+1 ≤ s1.length ≤ 15.
+
+[input] string s2
+
+A string consisting of lowercase English letters.
+
+Guaranteed constraints:
+1 ≤ s2.length ≤ 15.
+
+
+
+int commonCharacterCount(String s1, String s2) {    
+    final int ARRAY_SIZE = 26;
+    int[] counts1 = new int[ARRAY_SIZE];
+    int[] counts2 = new int[ARRAY_SIZE];
+    int count=0;    
+    
+    // mark the number of character in each string
+    for (Character c : s1.toCharArray())
+        counts1[c-'a']++;
+    for (Character c : s2.toCharArray())
+        counts2[c-'a']++;
+    
+    // take the minimum value of
+    for (int i=0; i<ARRAY_SIZE; i++){
+        count+=Math.min(counts1[i],counts2[i]);
+    }
+    
+    return count;
+}
