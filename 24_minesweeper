@@ -1,0 +1,27 @@
+https://app.codesignal.com/arcade/intro/level-5/ZMR5n7vJbexnLrgaM
+
+
+/* Solution */
+int[][] minesweeper(boolean[][] matrix) {  
+    int[][] res = new int[matrix.length][matrix[0].length];
+    for (int row=0; row < matrix.length; row++)
+        for (int col=0; col<matrix[0].length; col++)
+            res[row][col]=countMines(matrix, row, col);
+    return res;
+}
+
+int countMines(boolean[][] matrix, int row, int col ){
+    /* Allowed movements */
+    int[][] MOVEMENTS = new int[][] {{-1,-1},{-1,0},{-1,1},{0,-1},{0,1},{1,-1},{1,0},{1,1}};
+    int count = 0, rowMovement=0, colMovement=0;
+    for (int i = 0; i < MOVEMENTS.length; i++){
+        rowMovement = MOVEMENTS[i][0] + row;
+        colMovement = MOVEMENTS[i][1] + col;
+        /* Validate the movement in the matrix range */
+        if (rowMovement < matrix.length && rowMovement >=0 &&
+            colMovement < matrix[0].length && colMovement >=0)
+                if (matrix[rowMovement][colMovement] == true)
+                    ++count;
+    }
+    return count;
+}
