@@ -1,0 +1,26 @@
+https://app.codesignal.com/arcade/intro/level-5/XC9Q2DhRRKQrfLhb5
+
+
+
+int avoidObstacles(int[] inputArray) {  
+    final int MAX_OBSTACLES = 40;
+       
+    // Create a map base on inputArray    
+    boolean[] map = new boolean[MAX_OBSTACLES];
+    boolean checker = false;    
+    int jumpSize = 0;
+    
+    for (int i = 0; i < inputArray.length; i++)
+        map[inputArray[i]] = true;
+    
+    // Brute force
+    for (jumpSize = 1; jumpSize <= map.length/2; jumpSize++){
+        checker = false;
+        for (int jump = jumpSize; jump < map.length; jump+=jumpSize){
+            checker |= map[jump];
+        }
+        if (!checker)
+            return jumpSize;
+    }
+    return 0;
+}
