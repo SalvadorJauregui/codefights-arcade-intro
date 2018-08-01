@@ -1,0 +1,50 @@
+You have a string s that consists of English letters, punctuation marks, whitespace characters, and brackets. It is guaranteed that the parentheses in s form a regular bracket sequence.
+
+Your task is to reverse the strings contained in each pair of matching parentheses, starting from the innermost pair. The results string should not contain any parentheses.
+
+Example
+
+For string s = "a(bc)de", the output should be
+reverseParentheses(s) = "acbde".
+
+Input/Output
+
+[execution time limit] 3 seconds (java)
+
+[input] string s
+
+A string consisting of English letters, punctuation marks, whitespace characters and brackets. It is guaranteed that parentheses form a regular bracket sequence.
+
+Constraints:
+5 ≤ s.length ≤ 55.
+
+
+/* Solution */
+String reverseParentheses(String str) {
+       /* Approach use one Stack and one Queue` */
+    char character;
+    StringBuilder ok = new StringBuilder();
+    LinkedList<Character> list = new LinkedList<>();
+    LinkedList<Character> queue = new LinkedList();
+
+    for (int i = 0; i < str.length(); i++) {
+        list.addLast(str.charAt(i)); // like stack
+        if (str.charAt(i) == ')') {
+            list.removeLast(); //like stack
+            character = list.removeLast();
+            // add to queue till find '(' in stack
+            do {
+                queue.addLast(character);
+            } while ((character = list.removeLast()) != '('); //like stack
+            // return ALL the Queue to the Stack
+            while (queue.isEmpty() == false){
+                list.addLast(queue.remove());
+            }
+        }
+    }
+     
+    while(list.isEmpty() == false){
+        ok.append(list.removeFirst());
+    }
+    return (ok.toString());
+}
