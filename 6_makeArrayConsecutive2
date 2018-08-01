@@ -1,0 +1,15 @@
+
+
+int makeArrayConsecutive2(int[] statues) {
+    int count=0;    
+    Arrays.sort(statues);
+    int value = statues[0];
+    for (int i=0; i < statues.length; i++){
+        while(value != statues[i]){
+            ++value;
+            ++count;
+        } 
+        ++value;
+    }
+  return count;
+}
