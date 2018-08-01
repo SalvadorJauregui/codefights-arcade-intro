@@ -1,0 +1,41 @@
+Given a rectangular matrix of characters, add a border of asterisks(*) to it.
+
+Example
+
+For
+
+picture = ["abc",
+           "ded"]
+the output should be
+
+addBorder(picture) = ["*****",
+                      "*abc*",
+                      "*ded*",
+                      "*****"]
+
+/* Solution */
+String[] addBorder(String[] picture) {
+
+    String[] str = new String[picture.length+2];    
+    StringBuilder sb = new StringBuilder();
+           
+        
+    for (int i = 0; i < picture.length; i++) {
+            sb.append("*");
+            sb.append(picture[i]);
+            sb.append("*");
+            str[i+1] = sb.toString();
+            sb.setLength(0);            
+        }
+    
+        for (int i = 0; i < picture[0].length(); i++){
+            sb.append("*");
+        }
+    sb.append("*");
+    sb.append("*");
+    
+    str[0] = sb.toString();
+    str[picture.length+1] = sb.toString();
+    
+    return str;
+}
