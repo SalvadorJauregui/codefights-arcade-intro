@@ -1,4 +1,4 @@
-https://app.codesignal.com/arcade/intro/level-8/3AgqcKrxbwFhd3Z3R
+https://app.codesignal.com/arcade/intro/level-8/3AgqcKrxbwFhd3Z3R/description
 
 /* Solution 1 */
 int[] extractEachKth(int[] inputArray, int k) {    
