@@ -1,0 +1,77 @@
+https://app.codesignal.com/arcade/intro/level-7/PTWhv2oWqd6p4AHB9
+
+
+
+boolean stringsRearrangement(String[] inputArray) {
+
+    boolean[] visited = new boolean[inputArray.length];
+    boolean[][] edge = new boolean[inputArray.length][inputArray.length];
+
+
+    /* Fill out the relation */
+    for (byte i = 0; i < inputArray.length; i++) {
+        for (byte j = 0; j < inputArray.length; j++) {
+            if (i != j && true == diffByOneChar(inputArray[i], inputArray[j])) {
+                edge[i][j] = true;
+            }
+        }
+    }
+
+     /* Recursively find a path of size inputArray.length -1 */
+    return findThePath(visited, edge);
+}
+
+public static boolean findThePath(boolean[] visited, boolean[][] edge) {
+    /* for each vertex */
+    for (int i = 0; i < edge.length; i++) {
+        if (findThePath(visited, edge, i, 0) == true) {
+            return true;
+        }
+    }
+    return false;
+}
+
+public static boolean findThePath(boolean[] visited, boolean[][] edge,
+                                  int vertex, int distance) {
+    if (visited[vertex] == false) {
+        /* operation */
+        visited[vertex] = true;
+        ++distance;
+        if (distance == edge.length) {
+            /* # of links among vertex plus 1 */
+            return true;
+        }
+        
+        /* Recursivity */
+        for (int i = 0; i < edge[0].length; i++) {
+            if (edge[vertex][i] == true) {
+                if (true == findThePath(visited, edge, i, distance)) {
+                    return true;
+                }
+            }
+        }
+        /* unmark vertex */
+        visited[vertex] = false;
+    }
+    return false;
+}
+
+ public static boolean diffByOneChar(String word1, String word2) {     
+     byte[] countWords = new byte[26];
+     byte sum = 0;
+
+     /* word1 and word2 have the same length*/
+     for (int i = 0; i < word1.length(); i++) {
+         countWords[i] = (byte) ((word1.charAt(i) - 'a') - (word2.charAt(i) - 'a'));
+     }
+     /* If the difference is |2| they differ in one character */
+     for (int elem : countWords) {
+         if (elem != 0) {
+             sum++;
+         }
+         if (sum > 2) {
+             return false;
+         }      
+     }
+     return sum == 1;
+ }
