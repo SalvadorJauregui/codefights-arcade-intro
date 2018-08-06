@@ -1,5 +1,6 @@
 https://app.codesignal.com/arcade/intro/level-8/3AgqcKrxbwFhd3Z3R
 
+/* Solution 1 */
 int[] extractEachKth(int[] inputArray, int k) {    
     int[] newArray = new int[inputArray.length - (inputArray.length/k)];
         
@@ -9,4 +10,14 @@ int[] extractEachKth(int[] inputArray, int k) {
         }
     }    
     return newArray;
+}
+
+
+
+/* Solution 2 */
+int[] extractEachKth(int[] inputArray, int k) {
+    return IntStream.range(0, inputArray.length)
+        .filter(n -> (n + 1) % k != 0)
+        .map(n -> inputArray[n])
+        .toArray();
 }
