@@ -56,22 +56,19 @@ public static boolean findThePath(boolean[] visited, boolean[][] edge,
     return false;
 }
 
- public static boolean diffByOneChar(String word1, String word2) {     
+public static boolean diffByOneChar(String word1, String word2) {     
      byte[] countWords = new byte[26];
      byte sum = 0;
 
      /* word1 and word2 have the same length*/
      for (int i = 0; i < word1.length(); i++) {
          countWords[i] = (byte) ((word1.charAt(i) - 'a') - (word2.charAt(i) - 'a'));
-     }
-     /* If the difference is |2| they differ in one character */
-     for (int elem : countWords) {
-         if (elem != 0) {
-             sum++;
-         }
-         if (sum > 2) {
+     
+     /* If the difference is |2| they differ in one character */     
+         if (countWords[i] != 0)
+             sum++;         
+         if (sum > 2)
              return false;
-         }      
      }
      return sum == 1;
  }
