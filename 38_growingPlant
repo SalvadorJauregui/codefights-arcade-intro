@@ -20,3 +20,11 @@ int growingPlant(int upSpeed, int downSpeed, int desiredHeight) {
     }
     return k;
 }
+
+
+/* Solution 2 */
+
+int growingPlant(int upSpeed, int downSpeed, int desiredHeight) {
+   return Math.max(0, (int) Math.ceil((double) (desiredHeight - upSpeed) / (upSpeed - downSpeed))) + 1;
+}
+
