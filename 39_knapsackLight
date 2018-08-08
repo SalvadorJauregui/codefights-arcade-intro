@@ -1,0 +1,21 @@
+https://app.codesignal.com/arcade/intro/level-9/r9azLYp2BDZPyzaG2/description
+
+
+https://github.com/SalvadorJauregui/codefights-arcade-intro
+int knapsackLight(int value1, int weight1, int value2, int weight2, int maxW) {
+    
+    /* check if can take both */
+    if (weight1 + weight2 <= maxW)
+        return value1 + value2;
+    /* cannot buy any one */
+    else if (weight1 > maxW && weight2 >  maxW)
+        return 0;
+    /* cannot buy 1, but 2 is less than maxW */
+    else if (weight1 > maxW)
+        return value2;
+    /* cannot by 2, but 1 is less than maxW */
+    else if (weight2 > maxW)
+        return value1;
+    /* can buy only one, take the bigger one */
+    return Math.max(value1 , value2);
+}
