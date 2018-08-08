@@ -1,7 +1,6 @@
 https://app.codesignal.com/arcade/intro/level-9/r9azLYp2BDZPyzaG2/description
 
 
-https://github.com/SalvadorJauregui/codefights-arcade-intro
 int knapsackLight(int value1, int weight1, int value2, int weight2, int maxW) {
     
     /* check if can take both */
