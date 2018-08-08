@@ -1,0 +1,10 @@
+https://app.codesignal.com/arcade/intro/level-9/AACpNbZANCkhHWNs3/description
+
+String longestDigitsPrefix(String inputString) {
+    int index = 0;
+    for (; index < inputString.length(); index++)
+        if (Character.isDigit(inputString.charAt(index)) == false)          
+            break;
+        
+    return inputString.substring(0,index);
+}
