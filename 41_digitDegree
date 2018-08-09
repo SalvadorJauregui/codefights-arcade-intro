@@ -1,0 +1,22 @@
+https://app.codesignal.com/arcade/intro/level-9/hoLtYWbjdrD2PF6yo/description
+
+int digitDegree(int n) {
+    int count = 0;
+    
+    while(n > 9 ){
+        n = sumDigits(n);
+        ++count;
+    }
+    return count;
+}
+
+public static int sumDigits(int n){
+    int digit = 0, sum = 0;    
+    
+    while ( n != 0 ){
+        digit = n % 10; // get the rigthmost digit
+        sum += digit; // sum the rightmost digit
+        n /= 10; // update the passed in number
+    }
+    return sum;
+}
