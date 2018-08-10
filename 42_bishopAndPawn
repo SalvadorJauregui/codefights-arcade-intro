@@ -1,0 +1,9 @@
+https://app.codesignal.com/arcade/intro/level-9/6M57rMTFB9MeDeSWo/description
+
+boolean bishopAndPawn(String bishop, String pawn) { 
+  
+  int absLetter = Math.abs(pawn.charAt(0) - bishop.charAt(0));
+  int absNumber = Math.abs(pawn.charAt(1) - bishop.charAt(1));
+  
+  return absLetter == absNumber;
+}
