@@ -1,0 +1,15 @@
+https://app.codesignal.com/arcade/intro/level-10/PHSQhLEw3K2CmhhXE/description
+
+boolean isBeautifulString(String inputString) {
+    byte[] countWords = new byte[26];
+        
+    for (char c : inputString.toCharArray())
+        countWords[c-'a']++;
+    
+    for(byte i = 0; i < countWords.length - 1; i++)
+        /* check for beautiful condition */
+        if (countWords[i] < countWords[i+1])
+            return false;    
+    
+    return true;
+}
