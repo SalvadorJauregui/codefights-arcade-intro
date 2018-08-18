@@ -1,0 +1,34 @@
+https://app.codesignal.com/arcade/intro/level-10/ppZ9zSufpjyzAsSEx/description
+
+String buildPalindrome(String st) {
+    StringBuilder sb = new StringBuilder(st);
+    StringBuilder sub = new StringBuilder();
+    StringBuilder finalsb = new StringBuilder();
+    
+    /* It is already a palindrome */
+    if (isPalindrome(sb) == true) 
+        return sb.toString();
+
+    /* Remove the first character of the pass in String */
+    do {
+        sub.append(sb.charAt(0));
+        sb = sb.deleteCharAt(0);
+    } while (isPalindrome(sb) == false);
+    
+    /* Consolidate the final Result */
+    finalsb = sub;
+    sb.append(sub.reverse());
+    finalsb.reverse();
+    finalsb.append(sb);
+    
+    return finalsb.toString();
+}
+
+
+public static boolean isPalindrome(StringBuilder sb) {
+    for (int i = 0, j = sb.length() - 1; i < j; i++, j--)
+        if (sb.charAt(i) != sb.charAt(j)) 
+            return false;        
+    
+    return true;
+}
