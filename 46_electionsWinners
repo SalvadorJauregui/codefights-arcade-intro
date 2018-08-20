@@ -1,0 +1,22 @@
+https://app.codesignal.com/arcade/intro/level-10/8RiRRM3yvbuAd3MNg/description
+
+int electionsWinners(int[] votes, int k) {
+    int max = Integer.MIN_VALUE;
+    int canWin = 0;
+    int moreThanOne = 0;
+    
+    for (int vote : votes)
+        max = Math.max(max, vote);
+
+    for (int vote : votes){
+        if (vote + k > max)
+            ++canWin;   
+        if (vote == max)
+            moreThanOne++;
+    }
+    
+    if (canWin == 0 && moreThanOne == 1)
+        return 1;
+
+    return canWin;
+}
