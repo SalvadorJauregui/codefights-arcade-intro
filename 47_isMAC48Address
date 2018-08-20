@@ -1,0 +1,5 @@
+https://app.codesignal.com/arcade/intro/level-10/HJ2thsvjL25iCvvdm/description
+
+boolean isMAC48Address(String inputString) {
+       return inputString.matches("^([0-9a-fA-F]{2}[-]){5}([0-9a-fA-F]{2})$");
+}
