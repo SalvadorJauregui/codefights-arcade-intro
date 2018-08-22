@@ -1,0 +1,48 @@
+https://app.codesignal.com/arcade/intro/level-11/vpfeqDwGZSzYNm2uX/description
+
+
+/**** Solution 1 ****/
+int deleteDigit(int n) {
+    int m = 0;
+    for(int d = 1;d <= n; d*=10)
+        m = Math.max(m, ((n/d)/10)*d + n%d);
+    return m;
+}
+
+
+/**** Solution 2 ****/
+int deleteDigit(int n) {
+        int max = Integer.MIN_VALUE;
+        
+        /* Split number */
+        ArrayList<Integer> al = splitNumber(n);        
+
+        /* complose numbers and get the maximum */
+        for (int i = 0; i < al.size(); i++)
+            max = Math.max(max, getNum(al, i));
+        return max;   
+}
+
+/* Return the number by removing the digit in th position index */
+public static int getNum(ArrayList<Integer> al, int index) {
+    int number = 0, base = 1;
+    for (int i = al.size() - 1; i >= 0; i--) {
+        if (index == i)
+            continue;
+        
+        number += al.get(i) * base;
+        base *= 10;
+    }
+    return number;
+}
+
+/* Return an array of digits of the pass-in number n */
+public static ArrayList<Integer> splitNumber(int n) {
+    ArrayList<Integer> al = new ArrayList<>();
+    
+    while (n > 0 || n / 10 > 0) {
+        al.add(0, n % 10);
+        n /= 10;
+    }
+    return al;
+}
