@@ -1,0 +1,18 @@
+https://app.codesignal.com/arcade/intro/level-12/s9qvXv4yTaWg8g4ma/description
+
+String longestWord(String text) {
+    String maxText = "";
+    String textWord = "";
+    
+    Pattern pattern = Pattern.compile("[a-zA-Z]+");
+    Matcher matcher = pattern.matcher(text);
+    
+    while (matcher.find()){
+        /* Get the word */
+        textWord = text.substring(matcher.start(), matcher.end());
+        /* Get the longest word */
+        if (maxText.length() < textWord.length())
+            maxText = textWord;        
+    }
+    return maxText;    
+}
