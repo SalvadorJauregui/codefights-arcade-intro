@@ -9,7 +9,7 @@ String longestWord(String text) {
     
     while (matcher.find()){
         /* Get the word */
-        textWord = text.substring(matcher.start(), matcher.end());
+        textWord = matcher.group();
         /* Get the longest word */
         if (maxText.length() < textWord.length())
             maxText = textWord;        
