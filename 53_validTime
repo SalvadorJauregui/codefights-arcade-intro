@@ -1,0 +1,16 @@
+https://app.codesignal.com/arcade/intro/level-12/ywMyCTspqGXPWRZx5/description
+
+boolean validTime(String time) {
+    String[] timeSplit = time.split(":");
+    int tmpTime =0 ;
+    
+    /* Valid hour */
+    tmpTime = Integer.valueOf(timeSplit[0]);
+    if (tmpTime < 0 || tmpTime > 23)
+        return false;
+    /* Validad minutes*/
+    tmpTime = Integer.valueOf(timeSplit[1]);
+    if (tmpTime < 0 || tmpTime > 59)
+        return false;
+    return true;
+}
