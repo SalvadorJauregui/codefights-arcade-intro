@@ -1,0 +1,12 @@
+https://app.codesignal.com/arcade/intro/level-12/YqZwMJguZBY7Hz84T/description
+
+int sumUpNumbers(String inputString) {
+    Pattern p = Pattern.compile("\\d+");    
+    Matcher m = p.matcher(inputString);
+    int sum = 0;
+    
+    /* sum each number(group) that was found */
+    while(m.find())
+        sum+= Integer.valueOf(m.group());
+    return sum;
+}
