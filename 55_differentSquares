@@ -1,0 +1,52 @@
+https://app.codesignal.com/arcade/intro/level-12/fQpfgxiY6aGiGHLtv
+
+
+int differentSquares(int[][] matrix) {
+    TreeSet<Matrix> set = new TreeSet<>(new ComparatorMatrix());
+    
+    /* Add elements into set */
+    for (int row = matrix.length-1; row > 0; row--){
+        for (int col = matrix[0].length-1; col > 0; col--){
+            set.add(new Matrix(matrix[row-1][col-1],
+                              matrix[row][col-1],
+                              matrix[row-1][col],
+                              matrix[row][col]));
+        }
+    }
+    return set.size();
+    
+}
+
+    public static class Matrix {
+        int[] matrix22 = new int[4];
+        
+        Matrix(int a, int b, int c, int d) {
+            matrix22[0] = a;
+            matrix22[1] = b;
+            matrix22[2] = c;
+            matrix22[3] = d;
+         }
+    }
+
+    private static class ComparatorMatrix implements Comparator<Matrix>{
+        @Override
+        public int compare(Matrix o1, Matrix o2) {
+           if (o1.matrix22[0] < o2.matrix22[0])
+               return -1;
+           if (o1.matrix22[0] > o2.matrix22[0])
+               return 1;
+           if (o1.matrix22[1] < o2.matrix22[1])
+               return -1;
+           if (o1.matrix22[1] > o2.matrix22[1])
+               return 1;
+           if (o1.matrix22[2] < o2.matrix22[2])
+               return -1;
+           if (o1.matrix22[2] > o2.matrix22[2])
+               return 1;           
+           if (o1.matrix22[3] < o2.matrix22[3])
+               return -1;
+           if (o1.matrix22[3] > o2.matrix22[3])
+               return 1;
+          return 0; 
+        }                    
+    }
