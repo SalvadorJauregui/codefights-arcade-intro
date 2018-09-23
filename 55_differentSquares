@@ -1,6 +1,19 @@
 https://app.codesignal.com/arcade/intro/level-12/fQpfgxiY6aGiGHLtv
 
+/* Solutin 1 */
+int differentSquares(int[][] matrix) {
+    Set<String> squaresSet = new HashSet<String>();
+    
+    for(int i = 0; i < matrix.length - 1; i++) {
+        for(int j = 0; j < matrix[0].length - 1; j++) {
+            squaresSet.add(String.format("%d%d%d%d", matrix[i][j], matrix[i+1][j], matrix[i][j+1], matrix[i+1][j+1]));
+        }
+    }
+    return squaresSet.size();
+}
 
+
+/* Solution 2 */
 int differentSquares(int[][] matrix) {
     TreeSet<Matrix> set = new TreeSet<>(new ComparatorMatrix());
     
