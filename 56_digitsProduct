@@ -1,0 +1,17 @@
+https://app.codesignal.com/arcade/intro/level-12/NJJhENpgheFRQbPRA/description
+
+int digitsProduct(int product) {
+    if (product == 0)    return 10;
+    if (product == 1)    return 1;    
+    
+    StringBuilder sb = new StringBuilder();
+    /* Factorize number */
+     for (int i = 9 ; i > 1 ; i--){         
+         if (product % i == 0){
+             product /= i;
+             sb.insert(0, i);
+             i = 10;
+         }         
+     }    
+    return product > 1 ? -1 : Integer.valueOf(sb.toString());    
+}
