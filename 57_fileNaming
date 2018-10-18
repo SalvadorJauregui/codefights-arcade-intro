@@ -1,0 +1,31 @@
+https://app.codesignal.com/arcade/intro/level-12/sqZ9qDTFHXBNrQeLC
+
+String[] fileNaming(String[] names) {
+    for (int i = 1; i < names.length; i++) {
+        if (nameExist(names, i)) { /* First time */
+            names[i] = names[i] + "(1)";
+            while (nameExist(names, i))
+                increaseK(names, i);
+        }
+    }
+    return names;
+}
+
+public static boolean nameExist(String[] names, int index) {
+    String word = names[index];
+    for (int j = index - 1; j >= 0; j--) {
+        if (names[j].equals(word))
+            return true;
+    }
+    return false;
+}
+
+public static void increaseK(String[] names, int index) {
+    try {
+        String word = names[index].substring(0, names[index].lastIndexOf('('));        
+        int k = Integer.valueOf(names[index].substring(word.length()+1, names[index].length() - 1));        
+        names[index] = word + "(" + (++k) + ")";
+    } catch (Exception e) {
+        System.out.println("increaseK: there is no K number detected");
+    }
+}
