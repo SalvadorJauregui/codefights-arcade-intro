@@ -1,5 +1,7 @@
 https://app.codesignal.com/arcade/intro/level-12/sqZ9qDTFHXBNrQeLC
 
+
+/**** SOLUTION  1 ****/
 String[] fileNaming(String[] names) {
     for (int i = 1; i < names.length; i++) {
         if (nameExist(names, i)) { /* First time */
@@ -28,4 +30,19 @@ public static void increaseK(String[] names, int index) {
     } catch (Exception e) {
         System.out.println("increaseK: there is no K number detected");
     }
+}
+
+
+/***** SOLUTION  2 *****/
+Object fileNaming(String[] names) { 
+    List<String> renameList = new ArrayList<>();
+    for( String name : names ){
+        if(renameList.contains(name)){
+            int i = 0;
+            while(renameList.contains(name + "(" + (++i) + ")" ));            
+            name += "(" + i + ")";
+        }
+        renameList.add(name);
+    }
+    return renameList;
 }
