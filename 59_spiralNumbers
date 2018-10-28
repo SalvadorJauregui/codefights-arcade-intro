@@ -1,0 +1,44 @@
+https://app.codesignal.com/arcade/intro/level-12/uRWu6K8E7uLi3Qtvx/description
+
+Construct a square matrix with a size N × N containing integers from 1 to N * N in a spiral order, 
+starting from top-left and in clockwise direction.
+
+Example
+For n = 3, the output should be
+
+spiralNumbers(n) = [[1, 2, 3],
+                    [8, 9, 4],
+                    [7, 6, 5]]
+
+/ ***** SOLUTION *****/
+
+	public static int[][] spiralNumbers(int n) {
+		int[][] matrix = new int[n][n];
+		int offset = 0;
+		int numSpirals = n / 2;
+		int numCell = 0;
+		int walk = n - 1 - offset;
+
+		// Fill out the center of the matrix if odd number
+		if (n % 2 == 1)
+			matrix[numSpirals][numSpirals] = n * n;
+
+		while (numSpirals-- > 0) {
+			// left -> right
+			for (int i = 0; i < walk; i++)
+				matrix[offset][i + offset] = ++numCell;
+			// Top -> down
+			for (int i = 0; i < walk; i++)
+				matrix[i + offset][n - 1 - offset] = ++numCell;
+			// Right -> Left
+			for (int i = 0; i < walk; i++)
+				matrix[n - 1 - offset][n - 1 - offset - i] = ++numCell;
+			// Down -> Top
+			for (int i = 0; i < walk; i++)
+				matrix[n - 1 - offset - i][offset] = ++numCell;
+			++offset;
+			walk -= 2;
+		}
+		return matrix;
+	}
+
