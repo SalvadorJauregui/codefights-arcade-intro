@@ -10,8 +10,7 @@ spiralNumbers(n) = [[1, 2, 3],
                     [8, 9, 4],
                     [7, 6, 5]]
 
-/ ***** SOLUTION *****/
-
+/ ***** SOLUTION 1 *****/
 	public static int[][] spiralNumbers(int n) {
 		int[][] matrix = new int[n][n];
 		int offset = 0;
@@ -41,4 +40,32 @@ spiralNumbers(n) = [[1, 2, 3],
 		}
 		return matrix;
 	}
+	
+/***** SOLUTION 2 *****/
+int[][] spiralNumbers(int n) {
+    int[][] result = new int[n][n];
+    int top = 0;
+    int right = n-1;
+    int bottom = n-1;
+    int left = 0;
+    for(int num=1; num<=n*n;) {
+        for(int j=left; j<=right; j++) {
+            result[top][j] = num++;
+        }
+        top++;
+        for(int i=top; i<=bottom; i++) {
+            result[i][right] = num++;
+        }
+        right--;
+        for(int j=right; j>=left; j--) {
+            result[bottom][j] = num++;
+        }
+        bottom--;
+        for(int i=bottom; i>=top; i--) {
+            result[i][left] = num++;
+        }
+        left++;
+    }
+    return result;
+}
 
