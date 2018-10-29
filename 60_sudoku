@@ -1,0 +1,59 @@
+
+https://app.codesignal.com/arcade/intro/level-12/tQgasP8b62JBeirMS/description
+
+boolean sudoku(int[][] grid) {
+    final int SIZEMATRIX = 9;
+    
+    // Go through each 3x3 submatrix
+    for(int row = 0; row < SIZEMATRIX; row+=3){
+        for(int col = 0; col < SIZEMATRIX; col+=3){
+            if (validMatrix33(grid, row, col) == false)
+                return false;
+        }
+    }
+    // Valid whole crossing    
+    for (int row = 0; row < SIZEMATRIX; row++)
+        if (false == validMatrixRows(grid, row))
+            return false;
+    for (int col = 0; col < SIZEMATRIX; col++)
+        if (false == validMatrixCols(grid, col))
+            return false;
+    return true;
+}
+
+public boolean validMatrixCols(int[][] grid, int col){
+    boolean[] map = new boolean[10];
+    
+    for (int i =0; i < 9; i++){
+        if (map[ grid[i][col] ] == true)
+            return false;
+        map[ grid[i][col] ] = true;
+    }
+    
+    return true;
+}
+
+public boolean validMatrixRows(int[][]grid, int row){
+    boolean[] map = new boolean[10];
+    
+    for(int i = 0; i < 9; i++){
+        if (map[grid[row][i]] == true)
+            return false;
+        map[ grid[row][i] ] = true;       
+    }
+        
+    return true;
+}
+
+public boolean validMatrix33(int[][] grid, int row, int col){
+    boolean[] map = new boolean[10];
+    
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
+            if (map[ grid[row+i][col+j] ] == true)
+                return false;
+            map[ grid[row+i][col+j] ] = true;
+        }
+    }    
+    return true;
+}
