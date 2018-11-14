@@ -1,6 +1,8 @@
 
 https://app.codesignal.com/arcade/intro/level-12/tQgasP8b62JBeirMS/description
 
+
+/***** SOLUTION 1 *****/
 boolean sudoku(int[][] grid) {
     final int SIZEMATRIX = 9;
     
@@ -55,5 +57,26 @@ public boolean validMatrix33(int[][] grid, int row, int col){
             map[ grid[row+i][col+j] ] = true;
         }
     }    
+    return true;
+}
+
+
+/***** SOLUTION 2 *****/
+
+boolean sudoku(int[][] grid) {
+    for(int i=0; i<9; i++) {
+        int row = 0;
+        int col = 0;
+        int sqr = 0;
+        for(int j=0; j<9; j++) {
+            row |= 1 << grid[i][j];
+            col |= 1 << grid[j][i];
+            sqr |= 1 << grid[i/3*3 + j/3][i%3*3 + j%3];
+        }
+        int mask = (1<<10)-2;
+        if(row != mask || col != mask || sqr != mask) {
+            return false;
+        }
+    }
     return true;
 }
